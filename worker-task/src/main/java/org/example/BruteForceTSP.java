@@ -45,7 +45,7 @@ public class BruteForceTSP {
 
         TSPSolution solution = new TSPSolution();
         solution.startPermutation = startPermutation;
-        solution.endPermutation = startPermutation + batchSize;
+        solution.endPermutation = batchSize;
 
         bruteForceTSP(matrix, startCity, startPermutation, batchSize, solution);
 
@@ -74,19 +74,14 @@ public class BruteForceTSP {
             return;
         }
 
-        int endPermutation = startPermutation + batchSize;
-        if (endPermutation > totalPermutations) {
-            endPermutation = totalPermutations;
-        }
 
-        System.out.println("Задача: " + startPermutation + ":" + endPermutation +
-                " | batchSize=" + batchSize);
+        System.out.println("Задача: " + startPermutation + ":" + batchSize);
 
         // Генерация перестановок с учетом диапазона
         PermutationGenerator generator = new PermutationGenerator(otherCities);
         generator.skip(startPermutation);
 
-        for (int i = startPermutation; i < endPermutation; i++) {
+        for (int i = startPermutation; i < batchSize; i++) {
             if (!generator.hasNext()) break;
 
             List<Integer> permutation = generator.next();
@@ -234,5 +229,6 @@ public class BruteForceTSP {
 
         return response;
     }
+
 
 }

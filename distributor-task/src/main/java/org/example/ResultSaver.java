@@ -145,7 +145,6 @@ public class ResultSaver {
                 saveResult(currentResultJson);
                 System.out.println("Найден более оптимальный маршрут! Файл обновлен.");
                 System.out.println("Новая стоимость: " + currentCost + " (было: " + existingCost + ")");
-                System.out.println("Обработано перестановок: " + currentResult.get("processedPermutations").asInt());
             } else {
                 System.out.println("Текущий результат не лучше существующего (текущий: " +
                         currentCost + ", существующий: " + existingCost + ")");
